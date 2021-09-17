@@ -6,7 +6,7 @@ interface ContainerProps {
 	checked: boolean
 }
 
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.li<ContainerProps>`
 	display: flex;
 	flex-direction: row;
 
@@ -41,6 +41,7 @@ export const Container = styled.div<ContainerProps>`
 
 		background-color: ${props => props.theme.secondaryBackground};
 		color: ${props => props.checked === true ? props.theme.secondaryFontColor : props.theme.primaryFontColor};
+		cursor: pointer;
 
 		${props => props.checked === true && 
 			'text-decoration: line-through;'

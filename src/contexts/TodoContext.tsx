@@ -13,12 +13,12 @@ interface TodosProviderProps {
 
 interface TodosContextData {
 	todos: Todo[];
-	showTodos: Todo[];
+	filter: string;
 	createTodo: (todoInput: string) => void;
 	completeTodo: (todoId: string) => void;
 	excludeTodo: (todoId: string) => void;
 	clearCompleted: () => void;
-	filterTodos: (filter: string) => void;
+	FilterTodos: (filter: string) => void;
 }
 
 export const TodosContext = createContext<TodosContextData>({} as TodosContextData);
@@ -35,11 +35,10 @@ export function TodosProvider ({children}: TodosProviderProps) {
 			}
 		]) as [];
 	});
-	const [showTodos, setShowTodos] = useState<Todo[]>([]);
+	const [filter, setFilter] = useState('');
 
 	useEffect(() => {
 		localStorage.setItem('todos', JSON.stringify(todos));
-		setShowTodos(todos);
 	}, [todos]);
 
 	function createTodo(todoInput: string) {
@@ -75,30 +74,20 @@ export function TodosProvider ({children}: TodosProviderProps) {
 		setTodos([...newTodosArray]);
 	}
 
-	function filterTodos (filter: string | 'all' ) {
-		if (filter === 'all') {
-			setShowTodos(todos);
-		} else if (filter === 'active') {
-			let filteredTodos = todos.filter(todo => todo.complete === false)
-
-			setShowTodos(filteredTodos);
-		} else if (filter === 'completed') {
-			let filteredTodos = todos.filter(todo => todo.complete === true)
-
-			setShowTodos(filteredTodos);
-		};
+	function FilterTodos (filter: string) {
+		setFilter(filter)
 	}
 
 	return (
 		<TodosContext.Provider 
 			value={{
 				todos, 
-				showTodos,
+				filter,
 				createTodo, 
 				completeTodo, 
 				excludeTodo, 
 				clearCompleted, 
-				filterTodos}} 
+				FilterTodos}} 
 		>
 			{children}
 		</TodosContext.Provider>

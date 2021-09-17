@@ -4,14 +4,10 @@ import { TodosContext } from "../../contexts/TodoContext";
 import { FilterContainer, Button } from "./styles"
 
 export const Filter = ({style}: any) => {
-	const { filterTodos } = useContext(TodosContext);
-
-	function handleFilterTodos (filter: string) {
-		filterTodos(filter);
-	}
+	const { FilterTodos } = useContext(TodosContext);
 
 	function handleAddActive () {
-		const buttons = Array.from(document.querySelectorAll('.button'));
+		const buttons = Array.from(document.querySelectorAll('.btn'));
 
 		buttons.forEach((value, i, arr) =>{
 			value.addEventListener("click", (event) => {
@@ -21,6 +17,10 @@ export const Filter = ({style}: any) => {
 				value.classList.add("active");
 			})
 		});
+	}
+
+	function handleFilterTodos (filter: string) {
+		FilterTodos(filter);
 	}
 
 	handleAddActive();
