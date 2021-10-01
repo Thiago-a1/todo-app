@@ -19,6 +19,7 @@ interface TodosContextData {
 	excludeTodo: (todoId: string) => void;
 	clearCompleted: () => void;
 	FilterTodos: (filter: string) => void;
+	moveTodo: (from: number, to: number) => void;
 }
 
 export const TodosContext = createContext<TodosContextData>({} as TodosContextData);
@@ -78,6 +79,14 @@ export function TodosProvider ({children}: TodosProviderProps) {
 		setFilter(filter)
 	}
 
+	function moveTodo (from: number, to: number) {
+		const list = todos;
+		const [removed] = list.splice(from, 1);
+		list.splice(to, 0, removed);
+
+		setTodos(list);
+	}
+
 	return (
 		<TodosContext.Provider 
 			value={{
@@ -87,7 +96,8 @@ export function TodosProvider ({children}: TodosProviderProps) {
 				completeTodo, 
 				excludeTodo, 
 				clearCompleted, 
-				FilterTodos}} 
+				FilterTodos,
+				moveTodo}} 
 		>
 			{children}
 		</TodosContext.Provider>
