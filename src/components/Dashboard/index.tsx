@@ -30,6 +30,8 @@ export const Dashboard:React.FC = () => {
 					<TodoList />
 
 					<Filter />
+
+					<span className="message">Drag and drop to reorder list</span>
 				</Container>
 			</TodosProvider>
 		</ThemeProvider>
