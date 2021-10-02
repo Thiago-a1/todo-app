@@ -21,8 +21,9 @@ export const InputContainer = styled.form`
 		font-size: 0.8rem;
 
 		width: 100%;
-		height: 0.8rem;
-		margin-top: 2px;
+		height: 1rem;
+
+		padding-top: 4px;
 
 		background-color: ${props => props.theme.secondaryBackground};
 		color: ${props => props.theme.primaryFontColor};

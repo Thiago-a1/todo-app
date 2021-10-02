@@ -37,7 +37,7 @@ export const Container = styled.li<ContainerProps>`
 		font-size: 0.8rem;
 
 		width: 100%;
-		height: 0.8rem;
+		height: 0.7rem;
 
 		background-color: ${props => props.theme.secondaryBackground};
 		color: ${props => props.checked === true ? props.theme.secondaryFontColor : props.theme.primaryFontColor};

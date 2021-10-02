@@ -13,6 +13,10 @@ export default createGlobalStyle`
 		box-sizing: border-box;
 	}
 
+	html {
+		font-size: 112.5%;
+	}
+
 	body {
 		background-image: url(${props => props.theme.title === 'dark' ? bgMobileDark : bgMobileLight});
 		background-size: 100vw 34vh;
@@ -21,7 +25,7 @@ export default createGlobalStyle`
 
 		@media (min-width: 620px) {
 			background-image: url(${props => props.theme.title === 'dark' ? bgDesktopDark : bgDesktopLight});
-			background-size: 100vw 26vh;
+			background-size: 100vw 30vh;
 		}
 	}
 

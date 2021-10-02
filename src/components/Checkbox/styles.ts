@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 import CheckIcon from '../../assets/icon-check.svg';
 
@@ -35,6 +35,37 @@ export const StyledCheckbox = styled.div<CheckboxProps>`
 	border-radius: 50%;
 
 	${props => !props.onClick ? '' : 'cursor: pointer;'}
+
+	&:hover {
+		${props => !props.onClick ? '' : props.checked === false && css`
+			position: relative;
+
+			&::after {
+				position: absolute;
+				content: '';
+
+				width: 21px;
+				height: 21px;
+				z-index: 2;
+
+				background: ${props => props.theme.secondaryBackground};
+
+				border-radius: inherit;
+			}
+
+			&::before {
+				position: absolute;
+				content: '';
+
+				width: 23px;
+				height: 23px;
+				z-index: 1;
+
+				border-radius: inherit;
+				background-image: ${props => props.theme.gradient};
+			}
+		`}
+	}
 
 	${Icon} {
 		visibility: ${props => props.checked ? 'visible' : 'hidden'};

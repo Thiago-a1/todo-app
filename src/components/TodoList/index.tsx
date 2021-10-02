@@ -83,7 +83,7 @@ export const TodoList = () => {
 
 							<div className="filter-desktop">
 								<button 
-									className="button"
+									className="button active"
 									onClick={(event) => [
 										handleAddActive(event), 
 										handleFilterTodos('all')
